@@ -35,10 +35,19 @@ select {
 .correct-short {
     color: white;
     background-color: green;
+    display: inline;
 }
 
 .wrong {
     background-color: lightpink;
+}
+
+.tooltip-start::before {
+    content: "▶";
+}
+
+.tooltip-end::before {
+    content: "◀";
 }
 
 .tooltip {
