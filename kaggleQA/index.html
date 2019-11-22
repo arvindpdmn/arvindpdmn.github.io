@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>Predictions Visualizer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="default.theme.css">
+</head>
+
+<body>
+    <div id="header">
+        <h1>Predictions Visualizer</h1>
+        <em>Generated on 22-Nov-2019<br>
+            <a href="https://www.kaggle.com/arvindpdmn/prediction-visualizer" target="_blank">Script by arvindpdmn on Kaggle</a>
+        </em>
+    </div>
+
+    <div class="section">
+        <strong>Summary</strong>
+        <ul>
+            <li>Number of predictions: 14</li>
+            <li>Predictions from eval dataset (OK / KO): 0 / 0</li>
+            <li>Predictions from test dataset: 0<br><br></li>
+
+            <li>Candidates are enclosed within &#9654;...&#9664;.</li>
+            <li>Dark triangles enclose top-level candidates.</li>
+            <li>Hover on the triangles to see the token indices.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <strong>Example ID / Dataset / Long (Truth|Pred) / Short (Truth|Pred) / Question</strong>
+        <select id="select-example">
+            <option value="5655493461695504401">5655493461695504401 / Train / - / which is the most common use of opt-in e-mail marketing</option><option value="5328212470870865242">5328212470870865242 / Train / - / how i.met your mother who is the mother</option><option value="4435104480114867852">4435104480114867852 / Train / - / what type of fertilisation takes place in humans</option><option value="5289242154789678439">5289242154789678439 / Train / - / who had the most wins in the nfl</option><option value="5489863933082811018">5489863933082811018 / Train / - / what happened to the lost settlement of roanoke</option><option value="-2500044561429484630">-2500044561429484630 / Train / - / who played mantis guardians of the galaxy 2</option><option value="4958098854057393062">4958098854057393062 / Train / - / what indian tribe did the acadians form friendships and alliances with</option><option value="212419696952141239">212419696952141239 / Train / - / the nashville sound brought a polished and cosmopolitan sound to country music by</option><option value="-1706790511507651062">-1706790511507651062 / Train / - / what channel is the premier league on in france</option><option value="8044648802024176157">8044648802024176157 / Train / - / what is the use of jdk in java</option><option value="-1446769669686008214">-1446769669686008214 / Train / - / who needs to be in the car with a permit driver</option><option value="7301353800993082014">7301353800993082014 / Train / - / who plays young flo in the progressive commercials</option><option value="3817861884803470204">3817861884803470204 / Train / - / is hong kong a part of the commonwealth</option><option value="5429746486027633157">5429746486027633157 / Train / - / is the micrometer screw gauge used for measurement of inner diameter of tube</option>
+        </select>            
+    </div>
+
+    <iframe id="example-html"></iframe>
+
+    <script>
+        const elem = document.querySelector('#select-example');
+        elem.addEventListener('change', (event) => {
+            const result = document.querySelector('#example-html');
+            result.src = event.target.value + '.html';
+        });
+    
+        // Trigger event for current selection when page loads
+        var event = new Event('change');
+        elem.dispatchEvent(event);
+    </script>
+</body>
+ 
+</html>
