@@ -47,7 +47,7 @@ select {
 }
 
 .correct-short {
-    color: white;
+    color: white !important;
     background-color: green;
     display: inline;
 }
@@ -116,3 +116,11 @@ select {
 .candidate-child .tooltip {
     color: gray;
 }
+
+.unknown-short .tooltip-start,
+.unknown-short .tooltip-end,
+.correct-short .tooltip-start,
+.correct-short .tooltip-end {
+    color: white !important;
+}
+
