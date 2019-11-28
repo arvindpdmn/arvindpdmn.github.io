@@ -1,6 +1,6 @@
 iframe {
     width: 100%;
-    min-height: 10000px;
+    min-height: 1000px;
     border: 0px;
     border-top: 2px dashed black;
 }
@@ -24,12 +24,26 @@ select {
     margin-top: 5px;
 }
 
-.candidate-child .tooltip {
-    color: gray;
+.unknown {
+    background-color: skyblue;
+}
+
+.unknown-short {
+    color: white;
+    background-color: blue;
+    display: inline;
+}
+
+.pred-unknown {
+    color: blue !important;
+}
+
+.pred-unknown-short {
+    color: skyblue !important;
 }
 
 .correct {
-    background-color: greenyellow;
+    background-color: lightgreen;
 }
 
 .correct-short {
@@ -38,15 +52,41 @@ select {
     display: inline;
 }
 
+.pred-correct {
+    color: green !important;
+}
+
+.pred-correct-short {
+    color: lightgreen !important;
+}
+
 .wrong {
     background-color: lightpink;
 }
 
-.tooltip-start::before {
+.pred-wrong {
+    color: red !important;
+}
+
+.pred-wrong-short {
+    color: orange !important;
+}
+
+.pred-start:before {
+    content: "◗";
+    font-size: 1.2em;
+}
+
+.pred-end:before {
+    content: "◖";
+    font-size: 1.2em;
+}
+
+.tooltip-start:before {
     content: "▶";
 }
 
-.tooltip-end::before {
+.tooltip-end:before {
     content: "◀";
 }
 
@@ -71,4 +111,8 @@ select {
 
 .tooltip:hover .tooltiptext {
     visibility: visible;
+}
+
+.candidate-child .tooltip {
+    color: gray;
 }

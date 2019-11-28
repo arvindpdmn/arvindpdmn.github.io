@@ -11,7 +11,7 @@
 <body>
     <div id="header">
         <h1>Prediction Visualizer</h1>
-        <em>Generated on 22-Nov-2019<br>
+        <em>Generated on 28-Nov-2019<br>
             <a href="https://www.kaggle.com/arvindpdmn/prediction-visualizer" target="_blank">Script by arvindpdmn on Kaggle</a>
         </em>
     </div>
@@ -19,20 +19,74 @@
     <div class="section">
         <strong>Summary</strong>
         <ul>
-            <li>Number of predictions: 14</li>
+            <li>Number of predictions: 29</li>
             <li>Predictions from eval dataset (OK / KO): 0 / 0</li>
-            <li>Predictions from test dataset: 0<br><br></li>
+            <li>Predictions from test dataset: 12<br><br></li>
 
-            <li>Candidates are enclosed within &#9654;...&#9664;</li>
-            <li>Dark triangles enclose top-level candidates</li>
-            <li>Hover on the triangles to see the token indices</li>
+            <li>Top-level long answer candidates are enclosed within
+                <span class="candidate">
+                    <span class="tooltip-start"></span>...
+                    <span class="tooltip-end"></span>
+                </span>
+            </li>
+            <li>Non-top-level long answer candidates are enclosed within
+                <span class="candidate candidate-child">
+                    <span class="tooltip tooltip-start"></span>...
+                    <span class="tooltip tooltip-end"></span>
+                </span>
+            </li>
+            <li>Hover on the triangles to see the start and end token indices.</li>
+            <li>Where spans start/end on a table row, the markers are placed within the table cell. To aid debugging, token indices in tooltips are shown with '+1' (start) or '-1' (end).<br><br></li>
+
+            <li>
+                <span class="candidate correct">
+                    Ground truth long answer is highlighted.
+                    <span class="correct-short">
+                        <span class="tooltip tooltip-start"></span>
+                        Short answer is highlighted differently.
+                        <span class="tooltip tooltip-end"></span>
+                    </span>
+                    Long answer continues.
+                </span>
+            </li>
+            <li>Correct predictions are enclosed within
+                <span class="candidate correct">
+                    <span class="tooltip pred-start pred-correct"></span>...
+                    <span class="tooltip pred-end pred-correct"></span>
+                </span> (long) or
+                <span class="correct-short">
+                    <span class="tooltip pred-start pred-correct-short"></span>...
+                    <span class="tooltip pred-end pred-correct-short"></span>
+                </span> (short)
+            </li>
+            <li>
+                <span class="candidate wrong">
+                    Wrong prediction of a long answer is highlighted.
+                </span>
+            </li>
+            <li>Wrong predictions are enclosed within
+                <span class="tooltip pred-start pred-wrong"></span>...
+                <span class="tooltip pred-end pred-wrong"></span> (long) or
+                <span class="tooltip pred-start pred-wrong-short"></span>...
+                <span class="tooltip pred-end pred-wrong-short"></span> (short)
+            </li>
+            <li>When ground truths are not available (test dataset), predictions  are enclosed within
+                <span class="candidate unknown">
+                    <span class="tooltip pred-start pred-unknown"></span>...
+                    <span class="tooltip pred-end pred-unknown"></span>
+                </span> (long) or
+                <span class="candidate unknown-short">
+                    <span class="tooltip pred-start pred-unknown-short"></span>...
+                    <span class="tooltip pred-end pred-unknown-short"></span>
+                </span> (short)
+            </li>
         </ul>
     </div>
 
     <div class="section">
         <strong>Example ID / Dataset / Long (Result, Truth, Pred) / Short (Result, Truth, Pred) / Question</strong>
         <select id="select-example">
-            <option value="5655493461695504401">5655493461695504401 / Train / ('KO', '1952:2019', '970:1044') / ('KO', '1960:1969', '1580:1604') / which is the most common use of opt-in e-mail marketing</option><option value="5328212470870865242">5328212470870865242 / Train / ('KO', '212:310', '416:534') / ('KO', '213:215', 'YES') / how i.met your mother who is the mother</option><option value="4435104480114867852">4435104480114867852 / Train / ('KO', '319:438', '262:319') / ('KO', '-1:-1', 'NO') / what type of fertilisation takes place in humans</option><option value="5289242154789678439">5289242154789678439 / Train / ('KO', '509:576', '') / ('KO', '512:514', '') / who had the most wins in the nfl</option><option value="5489863933082811018">5489863933082811018 / Train / ('OK', '-1:-1', '') / ('OK', '-1:-1', '') / what happened to the lost settlement of roanoke</option><option value="-2500044561429484630">-2500044561429484630 / Train / ('OK', '82:169', '82:169') / ('OK', '83:85', '83:85') / who played mantis guardians of the galaxy 2</option><option value="4958098854057393062">4958098854057393062 / Train / ('OK', '562:695', '562:695') / ('OK', '-1:-1', '') / what indian tribe did the acadians form friendships and alliances with</option><option value="212419696952141239">212419696952141239 / Train / ('OK', '675:874', '675:874') / ('KO', '758:777', '700:740') / the nashville sound brought a polished and cosmopolitan sound to country music by</option><option value="-1706790511507651062">-1706790511507651062 / Train / ('OK', '932:1489', '932:1489') / ('KO', '1155:1157', '1140:1156') / what channel is the premier league on in france</option><option value="8044648802024176157">8044648802024176157 / Train / ('OK', '136:288', '136:288') / ('KO', '-1:-1', '150:1180') / what is the use of jdk in java</option><option value="-1446769669686008214">-1446769669686008214 / Train / ('KO', '4240:4282', '4100:4150') / ('OK', '4255:4280', '4255:4280') / who needs to be in the car with a permit driver</option><option value="7301353800993082014">7301353800993082014 / Train / ('KO', '-1:-1', '83:100') / ('KO', '-1:-1', '180:200') / who plays young flo in the progressive commercials</option><option value="3817861884803470204">3817861884803470204 / Train / ('OK', '6539:6646', '6539:6646') / ('OK', 'NO:NO', 'NO') / is hong kong a part of the commonwealth</option><option value="5429746486027633157">5429746486027633157 / Train / ('OK', '1353:1376', '1353:1376') / ('OK', 'YES:YES', 'YES') / is the micrometer screw gauge used for measurement of inner diameter of tube</option>
+            <option value="5655493461695504401">5655493461695504401 / Train / ('KO', '1952:2019', '970:1044') / ('KO', '1960:1969', '986:1000') / which is the most common use of opt-in e-mail marketing</option><option value="5328212470870865242">5328212470870865242 / Train / ('KO', '212:310', '416:536') / ('KO', '213:215', 'YES') / how i.met your mother who is the mother</option><option value="4435104480114867852">4435104480114867852 / Train / ('KO', '319:438', '262:319') / ('KO', '-1:-1', 'NO') / what type of fertilisation takes place in humans</option><option value="5289242154789678439">5289242154789678439 / Train / ('KO', '509:576', '') / ('KO', '512:514', '') / who had the most wins in the nfl</option><option value="5489863933082811018">5489863933082811018 / Train / ('OK', '-1:-1', '') / ('OK', '-1:-1', '') / what happened to the lost settlement of roanoke</option><option value="-2500044561429484630">-2500044561429484630 / Train / ('OK', '82:169', '82:169') / ('OK', '83:85', '83:85') / who played mantis guardians of the galaxy 2</option><option value="4958098854057393062">4958098854057393062 / Train / ('OK', '562:695', '562:695') / ('OK', '-1:-1', '') / what indian tribe did the acadians form friendships and alliances with</option><option value="212419696952141239">212419696952141239 / Train / ('OK', '675:874', '675:874') / ('KO', '758:777', '700:740') / the nashville sound brought a polished and cosmopolitan sound to country music by</option><option value="-1706790511507651062">-1706790511507651062 / Train / ('OK', '932:1489', '932:1489') / ('KO', '1155:1157', '1140:1156') / what channel is the premier league on in france</option><option value="8044648802024176157">8044648802024176157 / Train / ('OK', '136:288', '136:288') / ('KO', '-1:-1', '170:230') / what is the use of jdk in java</option><option value="3817861884803470204">3817861884803470204 / Train / ('OK', '6539:6646', '6539:6646') / ('OK', 'NO:NO', 'NO') / is hong kong a part of the commonwealth</option><option value="5429746486027633157">5429746486027633157 / Train / ('OK', '1353:1376', '1353:1376') / ('OK', 'YES:YES', 'YES') / is the micrometer screw gauge used for measurement of inner diameter of tube</option><option value="579503096242057352">579503096242057352 / Train / ('OK', '14:185', '14:185') / ('OK', '72:74', '72:74') / who starred in the ghost and mr. chicken</option><option value="8510065051410209672">8510065051410209672 / Train / ('OK', '258:359', '258:359') / ('KO', '289:290', '294:298') / who wrote the song all i ask by adele</option><option value="7553133436598981958">7553133436598981958 / Train / ('OK', '139:225', '139:225') / ('KO', '220:223', '220:225') / when does season 5 of senora acero come out</option><option value="8916489493449585105">8916489493449585105 / Train / ('OK', '134:175', '134:175') / ('KO', '159:163', '160:163') / when does the casino open in springfield ma</option><option value="-8683297919344444734">-8683297919344444734 / Train / ('OK', '1038:1119', '1038:1119') / ('KO', '1039:1042', '1040:1041') / who said no to this is your life</option><option value="930196817123445627">930196817123445627 / Test / ('?', None, '2559:2665') / ('?', None, '2583:2586') / what is one letter in the spanish alphabet that is not found in the english alphabet</option><option value="9212083134098244596">9212083134098244596 / Test / ('?', None, '168:241') / ('?', None, '233:238') / meaning of the name peniel in the bible</option><option value="9204032098950736962">9204032098950736962 / Test / ('?', None, '508:702') / ('?', None, '629:638') / wwe mixed match challenge season 2 team names</option><option value="958723574737344087">958723574737344087 / Test / ('?', None, '938:2597') / ('?', None, '1704:1706') / what's the average industrial wage in ireland</option><option value="8898704006223012351">8898704006223012351 / Test / ('?', None, '290:346') / ('?', None, '292:293') / first little bone of the middle ear shaped like a hammer</option><option value="8994564890124107395">8994564890124107395 / Test / ('?', None, '254:350') / ('?', None, '256:259') / what are the different intensity scale of an earthquake</option><option value="9043499022309600719">9043499022309600719 / Test / ('?', None, '117:217') / ('?', None, '126:127') / what does why dont we call their fans</option><option value="8901598759301757038">8901598759301757038 / Test / ('?', None, '2020:2200') / ('?', None, '2021:2026') / which of the following does not affect the radio communications on earth</option><option value="900126738178451873">900126738178451873 / Test / ('?', None, '640:706') / ('?', None, '687:705') / why do you have to wear wigs in court</option><option value="8980113463461562294">8980113463461562294 / Test / ('?', None, '662:860') / ('?', None, '701:711') / tokyo is the capital of this asian country</option><option value="8948288031943808715">8948288031943808715 / Test / ('?', None, '101:210') / ('?', None, '102:124') / what were the four trends that pushed europe toward war</option><option value="934950704129184964">934950704129184964 / Test / ('?', None, '496:616') / ('?', None, '515:517') / how many season of last man standing are there</option>
         </select>            
     </div>
 
