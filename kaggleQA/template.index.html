@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>Prediction Visualizer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="default.theme.css">
+</head>
+
+<body>
+    <div id="header">
+        <h1>Prediction Visualizer</h1>
+        <em>Generated on {today}<br>
+            <a href="https://www.kaggle.com/arvindpdmn/prediction-visualizer" target="_blank">Script by arvindpdmn on Kaggle</a>
+        </em>
+    </div>
+
+    <div class="section">
+        <strong>Summary</strong>
+        <ul>
+            <li>Number of predictions: {num_preds}</li>
+            <li>Predictions from eval dataset (OK / KO): {num_eval_pred_ok} / {num_eval_pred_ko}</li>
+            <li>Predictions from test dataset: {num_test_pred}<br><br></li>
+
+            <li>Top-level long answer candidates are enclosed within
+                <span class="candidate">
+                    <span class="tooltip-start"></span>...
+                    <span class="tooltip-end"></span>
+                </span>
+            </li>
+            <li>Non-top-level long answer candidates are enclosed within
+                <span class="candidate candidate-child">
+                    <span class="tooltip tooltip-start"></span>...
+                    <span class="tooltip tooltip-end"></span>
+                </span>
+            </li>
+            <li>Hover on the triangles to see the start and end token indices.</li>
+            <li>Where spans start/end on a table row, the markers are placed within the table cell. To aid debugging, token indices in tooltips are shown with '+1' (start) or '-1' (end).<br><br></li>
+
+            <li>
+                <span class="candidate correct">
+                    Ground truth long answer is highlighted.
+                    <span class="correct-short">
+                        <span class="tooltip tooltip-start"></span>
+                        Short answer is highlighted differently.
+                        <span class="tooltip tooltip-end"></span>
+                    </span>
+                    Long answer continues.
+                </span>
+            </li>
+            <li>Correct predictions are enclosed within
+                <span class="candidate correct">
+                    <span class="tooltip pred-start pred-correct"></span>...
+                    <span class="tooltip pred-end pred-correct"></span>
+                </span> (long) or
+                <span class="correct-short">
+                    <span class="tooltip pred-start pred-correct-short"></span>...
+                    <span class="tooltip pred-end pred-correct-short"></span>
+                </span> (short)
+            </li>
+            <li>
+                <span class="candidate wrong">
+                    Wrong prediction of a long answer is highlighted.
+                </span>
+            </li>
+            <li>Wrong predictions are enclosed within
+                <span class="tooltip pred-start pred-wrong"></span>...
+                <span class="tooltip pred-end pred-wrong"></span> (long) or
+                <span class="tooltip pred-start pred-wrong-short"></span>...
+                <span class="tooltip pred-end pred-wrong-short"></span> (short)
+            </li>
+            <li>When ground truths are not available (test dataset), predictions  are enclosed within
+                <span class="candidate unknown">
+                    <span class="tooltip pred-start pred-unknown"></span>...
+                    <span class="tooltip pred-end pred-unknown"></span>
+                </span> (long) or
+                <span class="candidate unknown-short">
+                    <span class="tooltip pred-start pred-unknown-short"></span>...
+                    <span class="tooltip pred-end pred-unknown-short"></span>
+                </span> (short)
+            </li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <strong>Example ID / Dataset / Long (Result, Truth, Pred) / Short (Result, Truth, Pred) / Question</strong>
+        <select id="select-example">
+            {pred_options}
+        </select>            
+    </div>
+
+    <iframe id="example-html"></iframe>
+
+    <script>
+        const elem = document.querySelector('#select-example');
+        elem.addEventListener('change', (event) => {{
+            const result = document.querySelector('#example-html');
+            result.src = event.target.value + '.html';
+        }});
+    
+        // Trigger event for current selection when page loads
+        var event = new Event('change');
+        elem.dispatchEvent(event);
+    </script>
+</body>
+ 
+</html>
